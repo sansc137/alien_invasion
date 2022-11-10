@@ -3,7 +3,7 @@ import sys
 import pygame
 from settings import Settings
 from ship import Ship
-
+from bullet import Bullet
 
 class AlienInvasion:
     def __init__(self):
@@ -15,6 +15,7 @@ class AlienInvasion:
         self.settings.screen_height = self.screen.get_rect().height
         pygame.display.set_caption("Alien_Invasion")
         self.ship = Ship(self)
+        self.bullets = pygame.sprite.Group()
 
 # 以下两个函数是为_check_events()函数设置的
     def _check_keydowm_events(self, event):
@@ -41,6 +42,7 @@ class AlienInvasion:
         
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
+        
                 
     def _update_screen(self):
         '''依照操作更新图像'''
@@ -54,7 +56,9 @@ class AlienInvasion:
         while True:
             self._check_events()
             self.ship.update()
+            self.bullets.update()
             self._update_screen()
+            
 
 
 if __name__ == '__main__':
