@@ -27,9 +27,9 @@ class Ship:
     def update(self):
         #更新飞船图像位置:
             if self.moving_right:
-                self.x += 1
+                self.x += self.settings.ship_speed
             elif self.moving_left:
-                self.x -= 1
+                self.x -= self.settings.ship_speed
             # 根据飞船图像位置更新碰撞位置
             self.rect.x = self.x
 
