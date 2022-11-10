@@ -1,7 +1,9 @@
 import sys
-import pygame
 
+import pygame
 from settings import Settings
+from ship import Ship
+
 
 class Alien_invasion:
     def __init__(self):
@@ -12,6 +14,7 @@ class Alien_invasion:
         self.screen = pygame.display.set_mode(
             (self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption("Alien_Invasion")
+        self.ship = Ship(self)
 
     def run_game(self):
         while True:
@@ -22,6 +25,7 @@ class Alien_invasion:
 
             # 每次循环时都重绘屏幕
             self.screen.fill(self.settings.bg_color)
+            self.ship.blitme()
             # 让最近绘制的屏幕可见
             pygame.display.flip()
 
