@@ -1,1 +1,1 @@
-self.ship.update()
+moving_left
