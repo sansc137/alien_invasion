@@ -19,6 +19,8 @@ class Alien_invasion:
                 if event in pygame.event.get():
                     sys.exit()
 
+            # 每次循环时都重绘屏幕
+            self.screen.fill(self.bg_color)
             # 让最近绘制的屏幕可见
             pygame.display.flip()
 
