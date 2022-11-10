@@ -5,7 +5,7 @@ from settings import Settings
 from ship import Ship
 
 
-class Alien_invasion:
+class AlienInvasion:
     def __init__(self):
         '''初始化游戏'''
         pygame.init()
@@ -31,5 +31,5 @@ class Alien_invasion:
 
 
 if __name__ == '__main__':
-    ai = Alien_invasion()
+    ai = AlienInvasion()
     ai.run_game()
