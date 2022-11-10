@@ -1,4 +1,5 @@
 import sys
+from typing import Self
 
 import pygame
 from settings import Settings
@@ -16,18 +17,24 @@ class AlienInvasion:
         pygame.display.set_caption("Alien_Invasion")
         self.ship = Ship(self)
 
-    def run_game(self):
-        while True:
-            # 监视键盘和鼠标事件
-            for event in pygame.event.get():
+    def _check_events(self):
+        '''响应玩家操作'''
+        for event in pygame.event.get():
                 if event in pygame.event.get():
                     sys.exit()
 
-            # 每次循环时都重绘屏幕
-            self.screen.fill(self.settings.bg_color)
-            self.ship.blitme()
-            # 让最近绘制的屏幕可见
-            pygame.display.flip()
+    def _update_screen(self):
+        '''依照操作更新图像'''
+        self.screen.fill(self.settings.bg_color)
+        self.ship.blitme()
+        # 让最近绘制的屏幕可见
+        pygame.display.flip()
+
+    def run_game(self):
+        '''运行游戏'''
+        while True:
+            self._check_events()
+            self._update_screen()
 
 
 if __name__ == '__main__':
