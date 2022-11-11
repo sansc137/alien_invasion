@@ -19,10 +19,13 @@ class Ship:
         
         # 存储小数值
         self.x = float(self.rect.x)
+        self.y = float(self.rect.y)
 
         # 移动开关
         self.moving_right = False
         self.moving_left = False
+        self.moving_up = False
+        self.moving_down = False
 
     def update(self):
         #更新飞船图像位置:
@@ -30,8 +33,14 @@ class Ship:
                 self.x += self.settings.ship_speed
             elif self.moving_left and self.rect.left > 0:
                 self.x -= self.settings.ship_speed
+
+            if self.moving_up and self.rect.top > 0:
+                self.y -= self.settings.ship_speed
+            elif self.moving_down and self.rect.bottom < self.screen_rect.bottom:
+                self.y += self.settings.ship_speed
             # 根据飞船图像位置更新碰撞位置
             self.rect.x = self.x
+            self.rect.y = self.y
 
     def blitme(self):
         '''在指定位置绘制飞船'''
