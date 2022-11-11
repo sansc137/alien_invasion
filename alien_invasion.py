@@ -36,8 +36,10 @@ class AlienInvasion:
 
     def _fire_bullet(self):
         '''创造一颗子弹,将其加入编组bullets中'''
-        new_bullets = Bullet(self)
-        self.bullets.add(new_bullets)
+        if len(self.bullets) < self.settings.bullets_allowed:
+            new_bullets = Bullet(self)
+            self.bullets.add(new_bullets)
+
 
     def _check_events(self):
         '''响应玩家操作'''
@@ -50,6 +52,13 @@ class AlienInvasion:
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
         
+    def _update_bullets(self):
+        self.bullets.update()
+            # 删除消失的子弹
+        for bullet in self.bullets.copy():
+            if bullet.rect.bottom <= 0:
+                self.bullets.remove(bullet)
+        print(len(self.bullets))
                 
     def _update_screen(self):
         '''依照操作更新图像'''
@@ -65,16 +74,9 @@ class AlienInvasion:
         while True:
             self._check_events()
             self.ship.update()
-            self.bullets.update()
+            self._update_bullets()
             self._update_screen()
-
-            # 删除消失的子弹
-            for bullet in self.bullets.copy():
-                if bullet.rect.bottom <= 0:
-                    self.bullets.remove(bullet)
-            print(len(self.bullets))
             
-
 
 if __name__ == '__main__':
     ai = AlienInvasion()

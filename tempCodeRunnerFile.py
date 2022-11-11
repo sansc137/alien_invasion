@@ -1,1 +1,1 @@
-moving_left
+bullets_allowed
