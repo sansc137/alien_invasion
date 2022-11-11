@@ -4,7 +4,6 @@ import pygame
 from settings import Settings
 from ship import Ship
 from bullet import Bullet
-from alien import Alien
 
 class AlienInvasion:
     def __init__(self):
@@ -17,24 +16,6 @@ class AlienInvasion:
         pygame.display.set_caption("Alien_Invasion")
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
-        self.aliens = pygame.sprite.Group()
-
-        self._creat_feet()
-
-    def _creat_feet(self):
-        '''敌人群体'''
-        alien = Alien(self)
-        alien_width = alien.rect.width
-        available_space_x = self.settings.screen_width - (2 * alien_width)
-        number_aliens_x = available_space_x // (2 * alien_width)
-
-        for alien_number in range(number_aliens_x):
-            alien = Alien(self)
-            alien.x = alien_width + 2 * alien_width * alien_number
-            alien.rect.x = alien.x    
-            self.aliens.add(alien)
-
-
 
 # 以下两个函数是为_check_events()函数设置的
     def _check_keydowm_events(self, event):
@@ -85,9 +66,6 @@ class AlienInvasion:
         self.ship.blitme()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
-        self.aliens.draw(self.screen)
-
-
         # 让最近绘制的屏幕可见
         pygame.display.flip()
 
