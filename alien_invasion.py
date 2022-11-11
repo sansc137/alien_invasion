@@ -67,6 +67,12 @@ class AlienInvasion:
             self.ship.update()
             self.bullets.update()
             self._update_screen()
+
+            # 删除消失的子弹
+            for bullet in self.bullets.copy():
+                if bullet.rect.bottom <= 0:
+                    self.bullets.remove(bullet)
+            print(len(self.bullets))
             
 
 
