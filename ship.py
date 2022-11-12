@@ -11,7 +11,7 @@ class Ship:
         self.screen_rect = ai_game.screen.get_rect()
 
         # 加载飞船图像并且获取其碰撞面积
-        self.image = pygame.image.load('images/ship.bmp')
+        self.image = pygame.image.load('images/ship.png')
         self.rect = self.image.get_rect()
 
         # 将飞船置于底部中央
