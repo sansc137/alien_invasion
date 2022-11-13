@@ -13,6 +13,8 @@ class AlienInvasion:
         self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         self.settings.screen_width = self.screen.get_rect().width
         self.settings.screen_height = self.screen.get_rect().height
+        # self.background = pygame.image.load('images/space.jpeg')
+        
         pygame.display.set_caption("Alien_Invasion")
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
@@ -73,6 +75,7 @@ class AlienInvasion:
     def _update_screen(self):
         '''依照操作更新图像'''
         self.screen.fill(self.settings.bg_color)
+        # self.screen.blit(self.background, (0, 0))
         self.ship.blitme()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
