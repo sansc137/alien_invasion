@@ -87,6 +87,13 @@ class AlienInvasion:
         # 让最近绘制的屏幕可见
         pygame.display.flip()
 
+    def _create_alien(self, alien_number):
+        alien = Alien(self)
+        alien_width = alien.rect.width
+        alien.x = alien_width + 4 * alien_width * alien_number
+        alien.rect.x = alien.x
+        self.aliens.add(alien)
+
     def _create_fleet(self):
         alien = Alien(self)
         alien_width = alien.rect.width
@@ -94,10 +101,7 @@ class AlienInvasion:
         number_aliens_x = available_space_x // (4 * alien_width)
 
         for alien_number in range(number_aliens_x):
-            alien = Alien(self)
-            alien.x = alien_width + 4 * alien_width * alien_number
-            alien.rect.x = alien.x
-            self.aliens.add(alien)
+            self._create_alien(alien_number)
 
     def run_game(self):
         '''运行游戏'''
