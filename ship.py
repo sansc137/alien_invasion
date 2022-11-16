@@ -9,6 +9,7 @@ class Ship:
         self.screen = ai_game.screen
         self.settings= ai_game.settings
         self.screen_rect = ai_game.screen.get_rect()
+        self.settings = ai_game.settings
 
         # 加载飞船图像并且获取其碰撞面积
         self.image = pygame.image.load('images/ship.png')
