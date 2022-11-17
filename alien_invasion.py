@@ -75,6 +75,10 @@ class AlienInvasion:
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
         print(len(self.bullets))
+
+        # 检测子弹与敌人的碰撞,如果是,删除子弹和敌人
+        collisions = pygame.sprite.groupcollide(
+            self.bullets, self.aliens, True, True)
                 
     def _update_screen(self):
         '''依照操作更新图像'''
