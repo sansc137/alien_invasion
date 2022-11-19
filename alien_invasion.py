@@ -29,7 +29,6 @@ class AlienInvasion:
             self.ship.moving_right = True
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = True
-
         if event.key == pygame.K_UP:
             self.ship.moving_up = True
         elif event.key == pygame.K_DOWN:
@@ -50,13 +49,6 @@ class AlienInvasion:
         elif event.key == pygame.K_DOWN:
             self.ship.moving_down = False
 
-    def _fire_bullet(self):
-        '''创造一颗子弹,将其加入编组bullets中'''
-        if len(self.bullets) < self.settings.bullets_allowed:
-            new_bullets = Bullet(self)
-            self.bullets.add(new_bullets)
-
-
     def _check_events(self):
         '''响应玩家操作'''
         for event in pygame.event.get():
@@ -67,6 +59,12 @@ class AlienInvasion:
         
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
+
+    def _fire_bullet(self):
+        '''创造一颗子弹,将其加入编组bullets中'''
+        if len(self.bullets) < self.settings.bullets_allowed:
+            new_bullets = Bullet(self)
+            self.bullets.add(new_bullets)
         
     def _update_bullets(self):
         self.bullets.update()
