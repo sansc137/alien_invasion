@@ -7,6 +7,7 @@ from bullet import Bullet
 from alien import Alien
 
 class AlienInvasion:
+
     def __init__(self):
         '''初始化游戏'''
         pygame.init()
@@ -22,6 +23,8 @@ class AlienInvasion:
         self.aliens = pygame.sprite.Group()
 
         self._create_fleet()
+
+
 
 # 以下两个函数是为_check_events()函数设置的
     def _check_keydowm_events(self, event):
@@ -60,6 +63,8 @@ class AlienInvasion:
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
 
+
+
     def _fire_bullet(self):
         '''创造一颗子弹,将其加入编组bullets中'''
         if len(self.bullets) < self.settings.bullets_allowed:
@@ -77,6 +82,8 @@ class AlienInvasion:
         # 检测子弹与敌人的碰撞,如果是,删除子弹和敌人
         collisions = pygame.sprite.groupcollide(
             self.bullets, self.aliens, True, True)
+
+            
                 
     def _update_screen(self):
         '''依照操作更新图像'''
@@ -130,6 +137,7 @@ class AlienInvasion:
         for alien in self.aliens.sprites():
             alien.rect.y += self.settings.fleet_drop_speed
         self.settings.fleet_direction *= -1
+
 
 
     def run_game(self):
